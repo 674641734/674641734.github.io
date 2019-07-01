@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | Gridea</title>
+<title>NestedScrolling | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -91,30 +91,46 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
+          <div class="post-detail">
+            <h2 class="post-title">NestedScrolling</h2>
+            <div class="post-date">2019-07-01</div>
+            
+            <div class="post-content">
+              <p>nestedParent：一个实现了NestedScrollingParent的父容器；
+nestedChild：一个实现了NestedScrollingChild的子View；
+[toc]</p>
+<h1 id="nestedscrollingparent">NestedScrollingParent</h1>
+<h2 id="onstartnestedscroll">onStartNestedScroll</h2>
+<pre><code class="language-java">public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes)
+</code></pre>
+<p>target: 发起嵌套滚动的子View，该子View必须实现NestedScrollingChild接口，该子View并不需要是当前View的直接子View</p>
+<p>child:当前View中直接包含target的子View</p>
+<p>当前nestedcChild想要进行嵌套滚动时，会调用nestedParent的这个方法，这个方法用来指示是否支持嵌套滚动;</p>
+<p>只支持垂直方向上的嵌套</p>
+<pre><code class="language-java">@Override
+public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {    
+  if (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL) {        
+    return true;    
+  }    
+  return false;
+}
+</code></pre>
+<h2 id="onnestedscrollaccepted">onNestedScrollAccepted</h2>
+<pre><code class="language-java">public void onNestedScrollAccepted(View child, View target, int axes)
+</code></pre>
+<h2 id="onnestedscroll">onNestedScroll</h2>
+<pre><code class="language-java">public void onNestedScroll(View target, int dxConsumed, int dyConsumed,int dxUnconsumed, int dyUnconsumed);
+</code></pre>
+<h1 id="nestedscrollingchild">NestedScrollingChild</h1>
+<h2 id=""></h2>
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
+            </div>
             
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2019</h2>
-              
-                
-                  <article class="post">
-                    <a href="https://674641734.github.io//post/nestedscrolling">
-                      <h2 class="post-title">
-                        NestedScrolling
-                      </h2>
-                    </a>
-                  </article>
-                
-              
             
+
+            
+
           </div>
-
-          <div class="pagination-container">
-  
-  
-</div>
 
         </div>
       </div>
