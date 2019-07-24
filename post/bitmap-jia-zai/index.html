@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>NestedScrolling | Gridea</title>
+<title>Bitmap加载 | Gridea</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,40 +92,64 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">NestedScrolling</h2>
-            <div class="post-date">2019-07-01</div>
+            <h2 class="post-title">Bitmap加载</h2>
+            <div class="post-date">2019-07-24</div>
             
             <div class="post-content">
-              <p>nestedParent：一个实现了NestedScrollingParent的父容器；
-nestedChild：一个实现了NestedScrollingChild的子View；
-[toc]</p>
-<h1 id="nestedscrollingparent">NestedScrollingParent</h1>
-<h2 id="onstartnestedscroll">onStartNestedScroll</h2>
-<pre><code class="language-java">public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes)
+              <h1 id="bitmapfactoryoptions">BitmapFactory.Options</h1>
+<pre><code>public boolean inJustDecodeBounds
 </code></pre>
-<p>target: 发起嵌套滚动的子View，该子View必须实现NestedScrollingChild接口，该子View并不需要是当前View的直接子View</p>
-<p>child:当前View中直接包含target的子View</p>
-<p>当前nestedcChild想要进行嵌套滚动时，会调用nestedParent的这个方法，这个方法用来指示是否支持嵌套滚动;</p>
-<p>只支持垂直方向上的嵌套</p>
-<pre><code class="language-java">@Override
-public boolean onStartNestedScroll(View child, View target, int nestedScrollAxes) {    
-  if (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL) {        
-    return true;    
-  }    
-  return false;
-}
+<p>如果设置为true，允许调用者查询位图而不必为其像素分配内存。</p>
+<pre><code class="language-java">public int inSampleSize
 </code></pre>
-<h2 id="onnestedscrollaccepted">onNestedScrollAccepted</h2>
-<pre><code class="language-java">public void onNestedScrollAccepted(View child, View target, int axes)
+<p>如果设置为&gt; 1，对原始图像进行二次采样，返回较小的图像以节省内存，
+样本大小是任一维度中对应于解码位图中的单个像素的像素数。例如，inSampleSize = 4返回的图像是原始宽度/高度的1/4，像素数量的1/16。任何值&lt;=1都被视为与1.注意：解码器使用基于2的幂的最终值，任何其他值将向下舍入到最接近的2的幂。</p>
+<h1 id="采样流程">采样流程</h1>
+<p>计算采样大小</p>
+<pre><code class="language-java">    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight)
+    {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height &gt; reqHeight || width &gt; reqWidth)
+        {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            while ((halfHeight / inSampleSize) &gt;= reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt;= reqWidth)
+            {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
 </code></pre>
-<h2 id="onnestedscroll">onNestedScroll</h2>
-<pre><code class="language-java">public void onNestedScroll(View target, int dxConsumed, int dyConsumed,int dxUnconsumed, int dyUnconsumed);
+<pre><code class="language-java">    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight)
+    {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
 </code></pre>
-<h1 id="nestedscrollingchild">NestedScrollingChild</h1>
-<h2 id=""></h2>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://674641734.github.io//post/nestedscrolling">
+                  <h3 class="post-title">
+                    NestedScrolling
+                  </h3>
+                </a>
+              </div>
             
 
             
