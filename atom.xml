@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://674641734.github.io/</id>
     <title>Gridea</title>
-    <updated>2019-07-24T09:03:02.662Z</updated>
+    <updated>2019-08-15T08:30:31.950Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://674641734.github.io/"/>
     <link rel="self" href="https://674641734.github.io//atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://674641734.github.io//images/avatar.png</logo>
     <icon>https://674641734.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[谷歌浏览器插件导出]]></title>
+        <id>https://674641734.github.io//post/gu-ge-liu-lan-qi-cha-jian-dao-chu</id>
+        <link href="https://674641734.github.io//post/gu-ge-liu-lan-qi-cha-jian-dao-chu">
+        </link>
+        <updated>2019-08-15T08:28:14.000Z</updated>
+        <content type="html"><![CDATA[<p><img src="https://674641734.github.io//post-images/1565857810491.png" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Bitmap加载]]></title>
         <id>https://674641734.github.io//post/bitmap-jia-zai</id>
@@ -22,7 +31,7 @@
 <p>如果设置为true，允许调用者查询位图而不必为其像素分配内存。</p>
 <pre><code class="language-java">public int inSampleSize
 </code></pre>
-<p>如果设置为&gt; 1，对原始图像进行二次采样，返回较小的图像以节省内存，
+<p>如果设置为&gt; 1，对原始图像进行二次采样，返回较小的图像以节省内存，<br>
 样本大小是任一维度中对应于解码位图中的单个像素的像素数。例如，inSampleSize = 4返回的图像是原始宽度/高度的1/4，像素数量的1/16。任何值&lt;=1都被视为与1.注意：解码器使用基于2的幂的最终值，任何其他值将向下舍入到最接近的2的幂。</p>
 <h1 id="采样流程">采样流程</h1>
 <p>计算采样大小</p>
@@ -66,8 +75,8 @@
         <link href="https://674641734.github.io//post/nestedscrolling">
         </link>
         <updated>2019-07-01T05:12:39.000Z</updated>
-        <content type="html"><![CDATA[<p>nestedParent：一个实现了NestedScrollingParent的父容器；
-nestedChild：一个实现了NestedScrollingChild的子View；
+        <content type="html"><![CDATA[<p>nestedParent：一个实现了NestedScrollingParent的父容器；<br>
+nestedChild：一个实现了NestedScrollingChild的子View；<br>
 [toc]</p>
 <h1 id="nestedscrollingparent">NestedScrollingParent</h1>
 <h2 id="onstartnestedscroll">onStartNestedScroll</h2>
