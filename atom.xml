@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://674641734.github.io/</id>
     <title>Gridea</title>
-    <updated>2019-08-15T08:30:31.950Z</updated>
+    <updated>2019-10-12T01:50:44.320Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://674641734.github.io/"/>
     <link rel="self" href="https://674641734.github.io//atom.xml"/>
@@ -10,15 +10,6 @@
     <logo>https://674641734.github.io//images/avatar.png</logo>
     <icon>https://674641734.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, Gridea</rights>
-    <entry>
-        <title type="html"><![CDATA[谷歌浏览器插件导出]]></title>
-        <id>https://674641734.github.io//post/gu-ge-liu-lan-qi-cha-jian-dao-chu</id>
-        <link href="https://674641734.github.io//post/gu-ge-liu-lan-qi-cha-jian-dao-chu">
-        </link>
-        <updated>2019-08-15T08:28:14.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://674641734.github.io//post-images/1565857810491.png" alt=""></p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[Bitmap加载]]></title>
         <id>https://674641734.github.io//post/bitmap-jia-zai</id>
